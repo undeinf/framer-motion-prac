@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import React, { useMemo, useState } from 'react';
 // import "./Slideshow.css";
 import { Container, ButtonNext, ButtonPrev, Items } from './Slideshow-style';
@@ -23,13 +23,14 @@ const Slideshow = ({ active, children, visible = 3 }) => {
             items.push(
                 // <div key={i} style={{ background: images[index] }}><span>{images[index]}</span></div>
                 <motion.div key={index}
+                    layoutId="slideId"
                     className={'item level' + counter}
                     positionTransition={{
-                        damping: 150,
+                        damping: 50,
                         stiffness: 500
                     }}
                     initial={{ opacity: 0 }}
-                    animate={{ scale: counter === -1 || counter === 1 ? 0.7 : 1, opacity: 1 }}
+                    animate={{ scale: counter === -1 || counter === 1 ? 0.7 : 1, opacity: 1, left: '10%' }}
                 >
                     {imagesList[index]}
                 </motion.div>
@@ -58,7 +59,9 @@ const Slideshow = ({ active, children, visible = 3 }) => {
                     <span>Previus : {activeIndex}</span>
                 </ButtonPrev>
                 <Items >
-                    {generate()}
+                    <AnimatePresence>
+                        {generate()}
+                    </AnimatePresence>
                 </Items>
                 <ButtonNext onClick={handleNext}>
                     <span>Next</span>

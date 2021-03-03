@@ -18,6 +18,7 @@ export const ButtonNext = styled.div`
 export const Items = styled(motion.div)`
     display: flex;
     align-items: center;
+    overflow: hidden;
     // transition: height 1s, width 1s, left 1s;
     
     // .level-1, .level1{
