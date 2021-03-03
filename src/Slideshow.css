@@ -1,0 +1,15 @@
+.slide-container{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.items{
+    display: flex;
+    align-items: center;
+}
+.btn-prev{
+    padding-right: 10px;
+}
+.btn-next{
+    padding-left: 10px;
+}
